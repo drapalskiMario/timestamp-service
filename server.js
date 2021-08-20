@@ -28,17 +28,17 @@ app.get('/api/:date?', (req, res) => {
   let { date } = req.params
   if (!date) {
     let unix = new Date().getTime()
-    res.json({ unix, 'date': unix, 'teste': 'teste' })
+    res.json({ unix, 'date': utc, 'teste': 'teste' })
   }
   const dateParse = Date.parse(date)
   if (dateParse) {
     const validDate = new Date(dateParse)
-    res.json({ 'unix': validDate.getTime(), 'date': validDate.toUTCString(),  teste: 'teste' })
+    res.json({ 'unix': validDate.getTime(), 'utc': validDate.toUTCString() })
   }
   const dateInt = parseInt(date)
   const newDate = new Date(dateInt)
   if (newDate != 'Invalid Date') {
-    res.json({ 'unix': newDate.getTime(), 'date': newDate.toUTCString() })
+    res.json({ 'unix': newDate.getTime(), 'utc': newDate.toUTCString() })
   } 
   res.json({ 'error': 'Invalid Date'})
 })
