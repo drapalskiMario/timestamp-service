@@ -27,8 +27,8 @@ app.get("/api/hello", function (req, res) {
 app.get('/api/:date?', (req, res) => {
   let { date } = req.params
   if (!date) {
-    let unix = new Date().getTime()
-    res.json({ unix, 'date': utc, 'teste': 'teste' })
+    let unix = new Date().getMinutes()
+    res.json({ unix, 'date': utc})
   }
   const dateParse = Date.parse(date)
   if (dateParse) {
